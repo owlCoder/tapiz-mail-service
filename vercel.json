@@ -1,17 +1,17 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
+    { "src": "api/send-2fa.js", "use": "@vercel/node" }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/send-2fa",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type"
       },
-      "dest": "/api/$1"
+      "dest": "/api/send-2fa.js"
     }
   ]
 }
