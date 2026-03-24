@@ -63,9 +63,9 @@ function generateEmailTemplate(code, appName = "Evidentiraj") {
           color: #666;
         }
         .warning {
-          color: #dc3545;
+          color: #7a3c42;
           font-size: 12px;
-          text-align: center;
+          text-align: left;
           margin-top: 15px;
         }
       </style>
@@ -78,10 +78,10 @@ function generateEmailTemplate(code, appName = "Evidentiraj") {
         <p>Poštovani,</p>
         <p>Vaš kod za dvofaktorsku autentifikaciju je:</p>
         <div class="code">${code}</div>
-        <p>Ovaj kod važi narednih 10 minuta.</p>
+        <p>Ovaj kod važi narednih 15 minuta.</p>
         <p>Ako niste pokušali da se prijavite, ignorišite ovaj email.</p>
         <div class="warning">
-          ⚠️ Nikada ne delite ovaj kod sa drugima.
+          Nikada ne delite ovaj kod sa drugima.
         </div>
       </div>
       <div class="footer">
