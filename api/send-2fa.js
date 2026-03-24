@@ -140,7 +140,7 @@ module.exports = async (req, res) => {
 
     // Pripremi email
     const mailOptions = {
-      from: `"Evidentiraj" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      from: `"Evidentiraj" <${process.env.SMTP_USER}>`,
       to: to,
       subject: `Evidentiraj - 2FA kod: ${code}`,
       html: generateEmailTemplate(code, appName),
