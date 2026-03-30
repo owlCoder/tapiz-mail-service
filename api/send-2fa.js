@@ -95,7 +95,7 @@ function generateEmailTemplate(code, appName = "Evidentiraj") {
 
 // CORS headers
 const setCorsHeaders = (res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN ?? "https://evident-rest-api.vercel.app");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Max-Age", "86400");
