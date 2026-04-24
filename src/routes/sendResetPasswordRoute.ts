@@ -8,7 +8,7 @@ import { SendResetPasswordBody } from "../models/SendResetPasswordBody";
 
 export const sendResetPasswordRouter = new Hono();
 
-sendResetPasswordRouter.post("/send-reset-password", async (c) => {
+sendResetPasswordRouter.post("/", async (c) => {
   let body: SendResetPasswordBody;
 
   try {
