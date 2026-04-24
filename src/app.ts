@@ -6,6 +6,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import { mailRateLimiter } from "./middleware/rateLimiter";
 import { send2faRouter } from "./routes/send2faRoute";
 import { docsHtml } from "./core/docs";
+import { apiKeyAuth } from "./middleware/authMiddleware";
 
 const app = new Hono();
 
@@ -16,6 +17,9 @@ app.use("*", cors({ origin: allowedOrigins }));
 
 // ── Body limit (1 MB — mail payloads are tiny) ────────────────────
 app.use("/api/mail/*", bodyLimit({ maxSize: 1 * 1024 * 1024 }));
+
+// Auth middleware
+app.use("/api/mail/*", apiKeyAuth); 
 
 // ── Rate limiter (10 req / 15 min per IP) ─────────────────────────
 app.use("/api/mail/*", mailRateLimiter);
