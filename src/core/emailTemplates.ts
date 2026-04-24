@@ -221,3 +221,220 @@ export function twoFactorTemplate(code: string, appName = "Tapiz"): string {
 </body>
 </html>`;
 }
+
+export function passwordResetTemplate(link: string, appName = "Tapiz"): string {
+  return /* html */ `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resetovanje lozinke · ${appName}</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f4f8;
+      margin: 0;
+      padding: 32px 20px;
+      line-height: 1.5;
+      color: #1e2a3e;
+    }
+
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+    }
+
+    .header {
+      background: ${HEX.primary900};
+      padding: 28px 28px;
+      text-align: center;
+      border-bottom: 3px solid ${HEX.primary};
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: white;
+    }
+
+    .header h2 span {
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: white;
+      margin-top: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .content {
+      padding: 36px 32px 32px;
+    }
+
+    .greeting {
+      font-size: 16px;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .instruction {
+      color: #334155;
+      font-size: 14px;
+      margin-bottom: 28px;
+      border-left: 3px solid ${HEX.primary200};
+      padding-left: 16px;
+    }
+
+    .btn-wrapper {
+      text-align: center;
+      margin: 28px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: ${HEX.primary};
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 12px;
+      letter-spacing: 0.1px;
+    }
+
+    .link-fallback {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 12px;
+      color: #64748b;
+      word-break: break-all;
+    }
+
+    .link-fallback a {
+      color: ${HEX.primary};
+    }
+
+    .validity {
+      font-size: 13px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 30px;
+      padding: 8px 18px;
+      text-align: center;
+      display: inline-block;
+      margin: 0 auto;
+      color: #1e293b;
+    }
+
+    .validity strong {
+      color: #d97706;
+      font-weight: 600;
+    }
+
+    .validity-wrapper {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .warning {
+      background: #fef9e8;
+      border-left: 4px solid #d97706;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 24px 0 20px;
+      font-size: 13px;
+      color: #92400e;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0 32px 32px;
+      font-size: 12px;
+      color: #64748b;
+      border-top: 1px solid #eef2f6;
+      margin-top: 8px;
+      background: #ffffff;
+    }
+
+    .footer p {
+      margin: 8px 0;
+    }
+
+    hr {
+      margin: 16px 0 12px;
+      border: none;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 16px; }
+      .content { padding: 28px 20px; }
+      .header h2 { font-size: 20px; }
+      .btn { padding: 12px 24px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2><span>${appName}</span> · Resetovanje lozinke</h2>
+      <div class="badge">Zahtev za promenu lozinke</div>
+    </div>
+    <div class="content">
+      <div class="greeting">Poštovani korisniče,</div>
+      <div class="instruction">
+        Primili smo zahtev za resetovanje lozinke na Vašem nalogu. Kliknite na dugme ispod da biste kreirali novu lozinku.
+      </div>
+
+      <div class="btn-wrapper">
+        <a href="${link}" class="btn">Resetovanje lozinke</a>
+      </div>
+
+      <div class="validity-wrapper">
+        <div class="validity">
+          Link ističe za <strong>30 minuta</strong>
+        </div>
+      </div>
+
+      <div class="link-fallback">
+        Ukoliko dugme ne radi, kopirajte sledeći link u pregledač:<br />
+        <a href="${link}">${link}</a>
+      </div>
+
+      <div class="warning">
+        Ukoliko niste zatražili resetovanje lozinke, možete bezbedno zanemariti ovu poruku. Vaša lozinka neće biti promenjena.
+      </div>
+    </div>
+    <div class="footer">
+      <p>Automatski generisana poruka · Molimo Vas da ne odgovarate na ovaj e‑mail</p>
+      <hr />
+      <p>© ${new Date().getFullYear()} ${appName} — Sva prava zadržana.</p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
