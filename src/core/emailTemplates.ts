@@ -201,7 +201,7 @@ export function twoFactorTemplate(code: string, appName = "Tapiz"): string {
       </div>
 
       <div class="validity">
-        Ovaj kod ističe za <strong>15 minuta</strong>.
+        Ovaj kod ističe za <strong>15 minuta</strong>
       </div>
 
       <div class="warning">
@@ -215,7 +215,7 @@ export function twoFactorTemplate(code: string, appName = "Tapiz"): string {
     <div class="footer">
       <p>Automatski generisana poruka · Molimo Vas da ne odgovarate na ovaj e‑mail</p>
       <hr />
-      <p>© ${new Date().getFullYear()} ${appName} — sigurna dvofaktorska autentifikacija</p>
+      <p>© ${new Date().getFullYear()} ${appName} — Sva prava zadržana.</p>
     </div>
   </div>
 </body>
