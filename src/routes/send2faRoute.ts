@@ -49,7 +49,7 @@ send2faRouter.post("/", async (c) => {
     return c.json({ error: "Code must be 6 digits" }, 400);
   }
 
-  const name = appName ?? "Tapiz";
+  const name = appName ?? "Tapiz Labs";
 
   try {
     const info = await getTransporter().sendMail({
@@ -78,9 +78,7 @@ send2faRouter.post("/", async (c) => {
     return c.json(
       {
         error:   smtpErrorMessage(err),
-        details: process.env.NODE_ENV === "development"
-          ? (err instanceof Error ? err.message : String(err))
-          : undefined,
+        details: (err instanceof Error ? err.message : String(err))
       },
       500,
     );
