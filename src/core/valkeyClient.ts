@@ -8,8 +8,8 @@ export function getValkeyClient(): Redis {
       tls: process.env.VALKEY_URL?.startsWith("rediss://") ? {} : undefined,
       lazyConnect: true,
       maxRetriesPerRequest: 1,
-      connectTimeout: 4000,
-      commandTimeout: 2000,
+      connectTimeout: 5000,
+      commandTimeout: 5000,
     });
 
     client.on("error", () => {
