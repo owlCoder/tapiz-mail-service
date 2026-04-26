@@ -21,5 +21,7 @@ export function getTransporter(): Transporter {
   return _transporter;
 }
 
-export const SMTP_FROM =
-  process.env.SMTP_FROM ?? process.env.SMTP_USER ?? "noreply@tapiz.rs";
+// Read at call time so Vercel env vars are guaranteed to be injected.
+export function getSmtpFrom(): string {
+  return process.env.SMTP_FROM ?? process.env.SMTP_USER ?? "noreply@tapiz.rs";
+}

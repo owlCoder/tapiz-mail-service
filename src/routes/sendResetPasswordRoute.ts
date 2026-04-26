@@ -1,6 +1,6 @@
 // src/routes/sendResetPasswordRoute.ts
 import { Hono } from "hono";
-import { getTransporter, SMTP_FROM } from "../core/mailer";
+import { getTransporter, getSmtpFrom } from "../core/mailer";
 import { passwordResetTemplate } from "../core/emailTemplates";
 import { smtpErrorMessage } from "../utils/smtpErrorUtil";
 import { EMAIL_REGEX, URL_REGEX } from "../core/constants";
@@ -38,7 +38,7 @@ sendResetPasswordRouter.post("/", async (c) => {
 
   try {
     const info = await getTransporter().sendMail({
-      from:    `"${name}" <${SMTP_FROM}>`,
+      from:    `"${name}" <${getSmtpFrom()}>`,
       to,
       subject: `${name} — Resetovanje lozinke`,
       html:    passwordResetTemplate(link, name),

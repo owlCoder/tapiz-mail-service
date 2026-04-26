@@ -1,16 +1,16 @@
 // ──────────────────────────────────────────────────────────────────
 //  Color Palette — matches Tapiz frontend CSS custom properties
-//  Primary: Warm brown / ochre (--color-primary-* series)
+//  Primary: Prussian Navy (--color-primary-* series)
 // ──────────────────────────────────────────────────────────────────
 
 export const HEX = {
-  primary:    "#a08040",
-  primary50:  "#faf7f2",
-  primary100: "#f0e8d8",
-  primary200: "#ddd0b0",
-  primary700: "#603e18",
-  primary800: "#503c14",
-  primary900: "#38280c",
+  primary:    "#0e72e8",
+  primary50:  "#f0f7ff",
+  primary100: "#daeeff",
+  primary200: "#aed8ff",
+  primary700: "#0e4c8a",
+  primary800: "#0d3d6e",
+  primary900: "#0c3159",
 
   gray50:  "#f9fafb",
   gray100: "#f3f4f6",

@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { getTransporter, SMTP_FROM } from "../core/mailer";
+import { getTransporter, getSmtpFrom } from "../core/mailer";
 import { twoFactorTemplate } from "../core/emailTemplates";
 import { EMAIL_REGEX, CODE_REGEX } from "../core/constants";
 import { Send2faBody } from "../models/Send2faBody";
@@ -37,7 +37,7 @@ send2faRouter.post("/", async (c) => {
 
   try {
     const info = await getTransporter().sendMail({
-      from:    `"${name}" <${SMTP_FROM}>`,
+      from:    `"${name}" <${getSmtpFrom()}>`,
       to,
       subject: `${name} — 2FA kod: ${code}`,
       html:    twoFactorTemplate(code, name),
