@@ -323,7 +323,7 @@ export function sessionSummaryTemplate(
   <div class="container">
     <div class="header">
       <h2>${appName} · Izveštaj prisustva</h2>
-      <div class="badge">Termin zatvorен</div>
+      <div class="badge">Termin završen</div>
     </div>
     <div class="content">
       <div class="subject-label">Predmet</div>
