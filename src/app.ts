@@ -6,6 +6,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import { mailRateLimiter } from "./middleware/rateLimiter";
 import { send2faRouter } from "./routes/send2faRoute";
 import { sendResetPasswordRouter } from "./routes/sendResetPasswordRoute";
+import { sendSessionSummaryRouter } from "./routes/sendSessionSummaryRoute";
 import { docsHtml } from "./core/docs";
 import { apiKeyAuth } from "./middleware/authMiddleware";
 
@@ -28,6 +29,7 @@ app.use("/api/mail/*", mailRateLimiter);
 // ── Mail routes ───────────────────────────────────────────────────
 app.route("/api/mail/send-2fa", send2faRouter);
 app.route("/api/mail/send-reset-password", sendResetPasswordRouter);
+app.route("/api/mail/send-session-summary", sendSessionSummaryRouter);
 
 // ── Health check ──────────────────────────────────────────────────
 app.get("/api/mail/health", (c) =>
